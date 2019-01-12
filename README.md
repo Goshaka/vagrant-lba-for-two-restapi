@@ -1,9 +1,9 @@
 # vagrant-lba-for-two-restapi#
 
 # Prerequisit:
-# VirtualBox — If you don’t already have it installed, you can download from: https://www.virtualbox.org/wiki/Downloads
-# Vagrant - https://www.vagrantup.com/downloads.html
-# vagrant-lba-for-two-restapi installation package should be download from: https://github.com/Goshaka/vagrant-lba-for-two-restapi
+### VirtualBox — If you don’t already have it installed, you can download from: https://www.virtualbox.org/wiki/Downloads
+### Vagrant - https://www.vagrantup.com/downloads.html
+### vagrant-lba-for-two-restapi installation package should be download from: https://github.com/Goshaka/vagrant-lba-for-two-restapi
 # Install vagrant docker-compose before executing "vagrant up"
 
 ```bash
@@ -12,43 +12,24 @@ vagrant plugin install vagrant-docker-compose
 
 
 # Project Architicture:
-# Vagrant is managing virtual box "centos/7" on the VirtualBox infrastructure.
-# On VM installed docker and docker-compose
-# Using haproxy docker as LBA
-# Using Flask docker as Python application framework.
-# Virtual box hostname defined in the local etc/hosts file: 192.168.1.100  docker.restapi.com  # VAGRANT
-# Haproxy lba is geting comming request to *:80 and moving them to one of the application flask dockers.
+### Vagrant is managing virtual box "centos/7" on the VirtualBox infrastructure.
+### On VM installed docker and docker-compose
+### Using haproxy docker as LBA
+### Using Flask docker as Python application framework.
+### Virtual box hostname defined in the local etc/hosts file: 192.168.1.100  docker.restapi.com  # VAGRANT
+### Haproxy lba is geting comming request to *:80 and moving them to one of the application flask dockers.
 
 # Environment installation:
-# 1. clone git https://github.com/Goshaka/vagrant-lba-for-two-restapi.git
-# 2. Go to git project directory
-# 3. Run "vagrant up"
-# 4. Open "docker.restapi.com" into your internet browser.
-
-
+### 1. clone git https://github.com/Goshaka/vagrant-lba-for-two-restapi.git
+### 2. Go to git project directory
+### 3. Run "vagrant up"
+### 4. Open "docker.restapi.com" into your internet browser.
 
 
 # Due to vagrant bug sometime it's imposible to install vagrant-docker-compose plugin from Vagrant file by running "vagrant up"
 
-'''ruby
-required_plugins = %w(vagrant-docker-compose )
 
-plugins_to_install = required_plugins.select { |plugin| not Vagrant.has_plugin? plugin }
-
-if not plugins_to_install.empty?
-puts "Installing plugins: #{plugins_to_install.join(' ')}"
-if system "vagrant plugin install #{plugins_to_install.join(' ')}"
-exec "vagrant #{ARGV.join(' ')}"
-else
-abort "Installation of one or more plugins has failed. Aborting."
-end
-end
-
-'''
-
-
-
-## Usage
+# Usage
 
 ### To install and run docker-compose on `vagrant up`
 
@@ -88,6 +69,19 @@ Equivalent to running:
 docker-compose -f [yml] up -d
 ```
 
-### To install, rebuild and run docker-compose on `vagrant up`
+# Test Environment Details:
+### OS Windows 10
+### Vagrant Installed Version: 2.1.2
+### Oracle VM VirtualBox Version 5.2.18 r124319
+### Chrome Internet Browser last version
+
+# Environment health check:
+### Open http://docker.restapi.com
+
+# Environment test:
+### Test Rest Api 1:
+### http://docker.restapi.com/rest1
+### Test Rest Api 2:
+### http://docker.restapi.com/rest2
 
 
