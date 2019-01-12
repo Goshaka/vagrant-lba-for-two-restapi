@@ -1,3 +1,9 @@
+unless Vagrant.has_plugin?("vagrant-docker-compose")
+  system("vagrant plugin install vagrant-docker-compose")
+  puts "Dependencies installed, please try the command again."
+  exit
+end
+
 Vagrant.configure("2") do |config|
   config.vm.hostname = "docker.restapi.com"
   config.vm.box = "centos/7"
