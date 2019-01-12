@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    apache_img_1:
+        container_name: helloworld_apache_con_1
+        build: ./flask/1/
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: 192.168.0.11
+    apache_img_2:
+        container_name: helloworld_apache_con_2
+        build: ./flask/2/
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: 192.168.0.22
+    haproxy_img:
+        build: ./haproxy
+        ports:
+            - 80:80
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: 192.168.0.33
+        environment:
+            - APACHE_1_IP=192.168.0.11
+            - APACHE_2_IP=192.168.0.22
+            - APACHE_EXPOSED_PORT=80
+networks:
+    public_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.0.0/24
