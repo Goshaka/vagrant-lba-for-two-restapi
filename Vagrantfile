@@ -1,7 +1,14 @@
-unless Vagrant.has_plugin?("vagrant-docker-compose")
-  system("vagrant plugin install vagrant-docker-compose")
-  puts "Dependencies installed, please try the command again."
-  exit
+required_plugins = %w(vagrant-docker-compose )
+
+plugins_to_install = required_plugins.select { |plugin| not Vagrant.has_plugin? plugin }
+
+if not plugins_to_install.empty?
+puts "Installing plugins: #{plugins_to_install.join(' ')}"
+if system "vagrant plugin install #{plugins_to_install.join(' ')}"
+exec "vagrant #{ARGV.join(' ')}"
+else
+abort "Installation of one or more plugins has failed. Aborting."
+end
 end
 
 Vagrant.configure("2") do |config|
@@ -28,7 +35,7 @@ Vagrant.configure("2") do |config|
 	  sudo pwd
 	 SHELL
   end
- 
+
 config.vm.provision :docker
 config.vm.provision :docker_compose, yml: ["/vagrant/docker/docker-compose.yml"]
 
