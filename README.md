@@ -33,9 +33,6 @@ C:/HashiCorp/Vagrant/embedded/gems/2.1.2/gems/vagrant-2.1.2/bin/vagrant:47:in `[
 ### 4. Open "docker.restapi.com" into your internet browser.
 
 
-# Due to vagrant bug sometime it's imposible to install vagrant-docker-compose plugin from Vagrant file by running "vagrant up"
-
-
 # Usage:
 
 ### To install and run docker-compose on `vagrant up`
