@@ -5,9 +5,16 @@
 ### Vagrant - https://www.vagrantup.com/downloads.html
 ### vagrant-lba-for-two-restapi installation package should be download from: https://github.com/Goshaka/vagrant-lba-for-two-restapi
 # Install vagrant docker-compose before executing "vagrant up"
+### Due to vagrant bug sometime it's imposible to install vagrant-docker-compose plugin from Vagrant file by running "vagrant up"
 
 ```bash
 vagrant plugin install vagrant-docker-compose
+```
+### Example of the vagrant plugin installation error:
+
+```bash
+C:/HashiCorp/Vagrant/embedded/gems/2.1.2/gems/vagrant-2.1.2/bin/vagrant:47:in `[]=': Invalid argument - ruby_setenv(VAGRANT_NO_PLUGINS) (Errno::EINVAL)
+        from C:/HashiCorp/Vagrant/embedded/gems/2.1.2/gems/vagrant-2.1.2/bin/vagrant:47:in `block in <main>'
 ```
 
 
